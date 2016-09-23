@@ -87,28 +87,37 @@
 %
 % \subsubsection{Base styles}
 %
-% All colors in \themename are derived from the definitions of |normal text|,
+% All colors in \themename are derived from the definitions of |onera text|,
 % |alerted text|, and |example text|.
 %
 %    \begin{macrocode}
+\definecolor{onera}{RGB}{47,99,183}% same as 91% cyan + 60% magenta
+\definecolor{brightonera}{RGB}{166,232,248}
+\setbeamercolor{structure}{fg=onera}
+\definecolor{naomi}{RGB}{51,51,153}
+\setbeamercolor{frametitle}{fg=white}
+\definecolor{complementary}{RGB}{255,179,46}
+\definecolor{darkcomplementary}{RGB}{191, 121, 0}
+\definecolor{oGreen}{RGB}{0, 96, 0}
+
 \newcommand{\metropolis@colors@dark}{
-  \setbeamercolor{normal text}{%
+  \setbeamercolor{onera text}{%
     fg=black!2,
-    bg=mDarkTeal
+    bg=onera
   }
-  \usebeamercolor[fg]{normal text}
+  \usebeamercolor[fg]{onera text}
 }
 \newcommand{\metropolis@colors@light}{
-  \setbeamercolor{normal text}{%
-    fg=mDarkTeal,
+  \setbeamercolor{onera text}{%
+    fg=onera,
     bg=black!2
   }
 }
 \setbeamercolor{alerted text}{%
-  fg=mLightBrown
+  fg=darkcomplementary
 }
 \setbeamercolor{example text}{%
-  fg=mLightGreen
+  fg=oGreen
 }
 %    \end{macrocode}
 %
@@ -117,17 +126,17 @@
 % \subsubsection{Derived colors}
 %
 % The titles and structural elements (e.g. |itemize| bullets) are set in the
-% same color as |normal text|. This would ideally done by setting |normal text|
+% same color as |onera text|. This would ideally done by setting |onera text|
 % as a parent style, which we do to set |titlelike|, but this doesn't work for
 % |structure| as its foreground is set explicitly in
 % |beamercolorthemedefault.sty|.
 %
 %    \begin{macrocode}
-\setbeamercolor{titlelike}{use=normal text, parent=normal text}
-\setbeamercolor{author}{use=normal text, parent=normal text}
-\setbeamercolor{date}{use=normal text, parent=normal text}
-\setbeamercolor{institute}{use=normal text, parent=normal text}
-\setbeamercolor{structure}{use=normal text, fg=normal text.fg}
+\setbeamercolor{titlelike}{fg=onera text.fg, use=onera text, parent=onera text}
+\setbeamercolor{author}{fg=onera text.fg!50!black, use=onera text, parent=onera text}
+\setbeamercolor{date}{fg=onera text.fg!50!black, use=onera text, parent=onera text}
+\setbeamercolor{institute}{fg=onera text.fg!50!black, use=onera text, parent=onera text}
+\setbeamercolor{structure}{fg=onera text.fg!50!black, use=onera text, fg=onera text.fg}
 %    \end{macrocode}
 %
 % The “primary” palette should be used for the most important navigational
@@ -136,9 +145,9 @@
 %
 %    \begin{macrocode}
 \setbeamercolor{palette primary}{%
-  use=normal text,
-  fg=normal text.bg,
-  bg=normal text.fg
+  use=onera text,
+  fg=onera text.bg,
+  bg=onera text.fg
 }
 \setbeamercolor{frametitle}{%
   use=palette primary,
@@ -174,15 +183,15 @@
 %
 % Block environments such as |theorem| and |example| have no background color
 % by default. The option |block=fill| sets a background color based on the
-% background and foreground of |normal text|. The option |block=transparent|
+% background and foreground of |onera text|. The option |block=transparent|
 % reverts the block environments to an empty background, which can be useful
 % if changing colors mid-presentation.
 %
 %    \begin{macrocode}
 \newcommand{\metropolis@block@transparent}{
   \setbeamercolor{block title}{%
-    use=normal text,
-    fg=normal text.fg,
+    use=onera text,
+    fg=onera text.fg,
     bg=
   }
   \setbeamercolor{block body}{
@@ -191,37 +200,47 @@
 }
 \newcommand{\metropolis@block@fill}{
   \setbeamercolor{block title}{%
-    use=normal text,
-    fg=normal text.fg,
-    bg=normal text.bg!80!fg
+    use=onera text,
+    fg=white,
+    bg=onera text.fg
   }
   \setbeamercolor{block body}{
-    use={block title, normal text},
-    bg=block title.bg!50!normal text.bg
+    use={block title, onera text},
+    bg=block title.bg!5!onera text.bg
   }
 }
 \setbeamercolor{block title alerted}{%
     use={block title, alerted text},
-    bg=block title.bg,
-    fg=alerted text.fg
+    fg=white,
+    bg=alerted text.fg
 }
 \setbeamercolor{block title example}{%
     use={block title, example text},
-    bg=block title.bg,
-    fg=example text.fg
+    fg=white,
+    bg=example text.fg
 }
-\setbeamercolor{block body alerted}{use=block body, parent=block body}
-\setbeamercolor{block body example}{use=block body, parent=block body}
+\setbeamercolor{block body alerted}{%
+    use=block body,
+    bg=alerted text.fg!10!onera text.bg
+}
+\setbeamercolor{block body example}{%
+    use=block body,
+    bg=example text.fg!10!onera text.bg
+}
 %    \end{macrocode}
 %
 % Footnotes
 %
 %    \begin{macrocode}
-\setbeamercolor{footnote}{fg=normal text.fg!90}
+\setbeamercolor{footnote}{fg=black!70}
 \setbeamercolor{footnote mark}{fg=.}
 %    \end{macrocode}
 %
+% Footline
 %
+%    \begin{macrocode}
+\setbeamercolor{footline}{fg=black!50}%,bg=onera text.fg}
+%    \end{macrocode}
 %
 % \subsubsection{Process package options}
 %

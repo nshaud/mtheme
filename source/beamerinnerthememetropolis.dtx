@@ -118,10 +118,13 @@
 %
 %    \begin{macrocode}
     \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
-    \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
     \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+    \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
     \vfill
-    \vspace*{1mm}
+    \includegraphics[width=0.3\textwidth]{logo-onera}\hfill
+    \includegraphics[width=0.3\textwidth]{logo-irisa}\hfill
+    \includegraphics[width=0.3\textwidth]{logo-total}
+    \vspace{2em}
   \end{minipage}
 }
 %    \end{macrocode}
@@ -143,7 +146,7 @@
   \ifbeamer@inframe
     \titlepage
   \else
-    \frame[plain,noframenumbering]{\titlepage}
+    \frame[plain,noframenumbering]{\titlepage} 
   \fi
 }
 \def\titlepage{%
